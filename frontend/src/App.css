@@ -1,34 +1,152 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* Custom animations */
+@keyframes fade-up {
     from {
-        transform: rotate(0deg);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-        transform: rotate(360deg);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-up {
+    animation: fade-up 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Product card hover */
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-image {
+    transition: transform 0.5s ease-out;
+}
+
+/* Button hover states */
+.btn-primary {
+    @apply bg-[hsl(var(--primary))] text-white rounded-sm px-6 py-3 font-medium;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    @apply bg-[hsl(220,20%,20%)];
+    transform: translateY(-1px);
+}
+
+/* Sale badge */
+.sale-badge {
+    @apply bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-sm;
+}
+
+/* Cyber Days gradient text */
+.cyber-gradient {
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Upload dropzone */
+.dropzone {
+    @apply border-2 border-dashed border-gray-300 rounded-sm p-8 text-center cursor-pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dropzone:hover {
+    @apply border-gray-400 bg-gray-50;
+}
+
+.dropzone.active {
+    @apply border-blue-500 bg-blue-50;
+}
+
+/* QR container */
+.qr-container {
+    @apply bg-white p-6 rounded-sm shadow-sm border border-gray-100;
+}
+
+/* Status badges */
+.status-pending {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-confirmed {
+    @apply bg-green-100 text-green-800;
+}
+
+.status-rejected {
+    @apply bg-red-100 text-red-800;
+}
+
+/* Admin sidebar */
+.admin-sidebar {
+    @apply w-64 bg-[hsl(220,20%,10%)] text-white min-h-screen;
+}
+
+.admin-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-nav-item.active {
+    @apply text-white bg-white/10;
+}
+
+/* Table styles */
+.admin-table {
+    @apply w-full text-sm;
+}
+
+.admin-table th {
+    @apply text-left py-3 px-4 font-medium text-gray-600 border-b;
+}
+
+.admin-table td {
+    @apply py-3 px-4 border-b border-gray-100;
+}
+
+/* Form styles */
+.form-input {
+    @apply w-full px-4 py-2 border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))]/20 focus:border-[hsl(var(--primary))];
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+/* Bento grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+}
+
+.bento-large {
+    grid-column: span 8;
+}
+
+.bento-small {
+    grid-column: span 4;
+}
+
+@media (max-width: 768px) {
+    .bento-large,
+    .bento-small {
+        grid-column: span 12;
     }
 }
