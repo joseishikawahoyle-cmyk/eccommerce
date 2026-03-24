@@ -1,0 +1,104 @@
+{
+  "theme": "light",
+  "typography": {
+    "headings": "Outfit",
+    "body": "DM Sans",
+    "typesetting": "Use tight letter spacing (`tracking-tight` or `tracking-tighter`) for headings > 32px. Use uppercase, tiny size, and wide spacing (`tracking-[0.2em]`) for overlines, labels, and small CTAs. Do not use Inter or generic default fonts. Maintain high legibility for product prices and numbers."
+  },
+  "colors": {
+    "strategy": "Archetype 1: Organic & Earthy meets Minimalist Swiss. Black/White/Neutral foundation where the product is the hero, with brand colors (like Cyber Days promos) configurable via admin.",
+    "base": "hsl(0, 0%, 100%) [Pure White] and hsl(0, 0%, 98%) [Stone/Off-White] for section distinction.",
+    "text": "hsl(220, 20%, 10%) [Dark Charcoal] for primary text. Avoid pure black.",
+    "primary": "hsl(220, 20%, 10%) by default, but meant to be dynamically injected via Admin CMS.",
+    "admin_config": "The application must support CSS variables for the primary brand color so the Admin can customize it. Example: `--primary: 220 20% 10%`.",
+    "forbidden_colors": ["#7351B7", "teal green", "teal blue", "#1B93A4"]
+  },
+  "visual_enhancers": {
+    "surfaces": "Use 'Glassmorphism' (Crystal variant) for sticky headers: `bg-white/70 backdrop-blur-xl border-b border-black/5`. For product cards, use flat backgrounds with no borders, or a very subtle 1px border (`border-black/5`) without shadows.",
+    "shadows": "E-commerce front-end: Minimal to no shadows. Rely on spacing and typography for hierarchy. Admin Panel: Use 'Grid Borders' or subtle 1px borders with very soft ambient shadows (`shadow-sm`) on hover.",
+    "textures": "Consider a very subtle noise overlay for the hero section to kill digital flatness, but keep product images perfectly clean."
+  },
+  "layouts": {
+    "spacing": "Generous spacing. Use `py-24` or `py-32` for sections. Container padding should be `px-6 md:px-12`. Negative space is critical to make it feel premium.",
+    "grids": "E-commerce Home: Use an asymmetric 'Bento' grid for Cyber Days banners (e.g., 1 large feature, 2 smaller supporting promos). Product Catalog: Standard 2-col (mobile) to 4-col (desktop) uniform grids.",
+    "admin_grids": "High Density Grid (Mode B). Dense, functional, strict grid hierarchy using `gap-4` or `gap-6`."
+  },
+  "motion": {
+    "animations": "Use `framer-motion` for page transitions. Product images must have a subtle hover scale (`group-hover:scale-105 transition-transform duration-500 ease-out`).",
+    "interactions": "Micro-interactions on all buttons and interactive elements. Staggered fade-up entrances for product lists."
+  },
+  "accessibility": {
+    "contrast": "Ensure text on hero images is readable (use subtle gradients or text shadows). Do not use transparent backgrounds without blur/scrim for dropdowns or navs.",
+    "testing": "All interactive and key informational elements MUST include a `data-testid` attribute (e.g., `data-testid=\"yape-checkout-button\"`, `data-testid=\"admin-save-brand-color\"`)."
+  },
+  "components": {
+    "buttons": "Sharp, elegant buttons. No excessive border-radius. Use `rounded-sm` or `rounded-none`. CTAs should stand out using the primary brand color.",
+    "inputs": "Clean, minimalist inputs. Consider a variant with only a bottom border for a high-end fashion feel, or standard Shadcn inputs customized with `rounded-sm`.",
+    "checkout": "Frictionless 2-column layout. When 'Yape/Plin' is selected, display a crisp, clean modal or inline section with the QR code and clear instructions to upload the voucher. Include an elegant 'Upload Receipt' dropzone.",
+    "admin_panel": "Use Shadcn UI customized to be dense. Cardless or 4px radius. High contrast for readability."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.pexels.com/photos/7302793/pexels-photo-7302793.jpeg",
+      "category": "hero",
+      "description": "Elegant display of handmade ceramic clay art pieces, for minimalist hero banner background."
+    },
+    {
+      "url": "https://images.pexels.com/photos/13221796/pexels-photo-13221796.jpeg",
+      "category": "hero",
+      "description": "Portrait of a fashionable African American woman, alternative hero/promo banner."
+    },
+    {
+      "url": "https://images.pexels.com/photos/167703/pexels-photo-167703.jpeg",
+      "category": "product",
+      "description": "Stylish flat lay of a leather handbag with luxury accessories."
+    },
+    {
+      "url": "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg",
+      "category": "product",
+      "description": "Elegant brown leather briefcase."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1643569556871-91ec60671ed7",
+      "category": "product",
+      "description": "White vase sitting on top of a table."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1605714117967-9fe201ddfe9d",
+      "category": "product",
+      "description": "2 white ceramic mugs on white table."
+    },
+    {
+      "url": "https://images.pexels.com/photos/3817497/pexels-photo-3817497.jpeg",
+      "category": "editorial",
+      "description": "Top view of a woman crafting white ceramic pottery pieces. Use for 'About Us' or category banner."
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Build a React frontend (use .jsx/.js, NOT .tsx/.ts) and FastAPI backend with MongoDB.",
+    "Do NOT use 'Inter' for headings. Install and use 'Outfit' (headings) and 'DM Sans' (body) via Google Fonts.",
+    "Implement Yape/Plin payment flow clearly: Display QR code -> Provide file upload for voucher -> Show 'Pending Validation' state.",
+    "Create an Admin Panel route that manages Products (CRUD), reviews Orders/Vouchers, and configures the store's primary theme color (saved to backend and applied dynamically via CSS variables).",
+    "Install 'lucide-react' for all iconography.",
+    "Install 'framer-motion' for page transitions and micro-interactions.",
+    "Install 'sonner' for elegant toast notifications.",
+    "Ensure the layout is highly responsive, optimizing for mobile users in Peru on 4G/5G connections.",
+    "Apply 'data-testid' to ALL buttons, inputs, and functional UI elements.",
+    "Use Shadcn components, but heavily customize them to match the minimalist, elegant e-commerce vibe (e.g., override rounded-md to rounded-sm, use flat designs)."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Avoid generic 'AI slop' aesthetics. Do not use standard centered, boring layouts. Embrace asymmetry and generous negative space.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Create depth through layered design elements with z-index hierarchy, but keep styling flat and elegant for this project.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) for sticky navs and overlays.",
+    "You MUST NOT apply universal transition (e.g., transition: all). Add transitions for specific interactive elements only.",
+    "You MUST NOT center align the app container. Do not add '.App { text-align: center; }'. Keep natural reading flow.",
+    "Always use modern button styles (sharp rounded-sm) with interaction animations and explicit hover color states.",
+    "NEVER use AI assistant Emoji characters for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Prioritize using pre-existing components from src/components/ui when applicable.",
+    "Components MUST use named exports (export const ComponentName = ...). Pages MUST use default exports (export default function PageName() {...}).",
+    "For the Yape/Plin flow, ensure the QR code is clearly visible and the file uploader for the receipt is extremely user-friendly."
+  ]
+}
