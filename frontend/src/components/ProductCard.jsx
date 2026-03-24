@@ -11,8 +11,10 @@ export const ProductCard = ({ product, index = 0 }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product, 1);
-    toast.success(`${product.name} agregado al carrito`);
+    if (product.stock > 0) {
+      addToCart(product, 1);
+      toast.success(`${product.name} agregado al carrito`);
+    }
   };
 
   const imageUrl = product.images?.[0]

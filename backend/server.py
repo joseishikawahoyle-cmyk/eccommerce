@@ -292,7 +292,7 @@ async def get_banners():
     return banners
 
 # ============== ORDER ROUTES ==============
-@api_router.post("/orders")
+@api_router.post("/orders", status_code=201)
 async def create_order(order_data: OrderCreate):
     items_with_details = []
     subtotal = 0
@@ -462,7 +462,7 @@ async def admin_get_products(current_admin: dict = Depends(get_current_admin)):
     products = await db.products.find({"is_deleted": False}, {"_id": 0}).to_list(500)
     return products
 
-@api_router.post("/admin/products")
+@api_router.post("/admin/products", status_code=201)
 async def admin_create_product(product_data: ProductCreate, current_admin: dict = Depends(get_current_admin)):
     product = Product(**product_data.model_dump())
     await db.products.insert_one(product.model_dump())
